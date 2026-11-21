@@ -3,4 +3,7 @@
 app = create_app()
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, debug=False)
+    # НАМЕРЕННАЯ УЯЗВИМОСТЬ ДЛЯ ДЕМО: debug=True и опасный eval
+    user_input = "print('Hacked!')"
+    eval(user_input) 
+    app.run(host="0.0.0.0", port=5000, debug=True)
