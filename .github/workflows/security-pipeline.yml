@@ -30,6 +30,7 @@ jobs:
     - name: Run Bandit (SAST)
       run: |
         python -m bandit -r . -f json -o reports/bandit-report.json || true
+        python -m bandit -r . || true
       continue-on-error: true
 
     - name: Run Semgrep (SAST)
