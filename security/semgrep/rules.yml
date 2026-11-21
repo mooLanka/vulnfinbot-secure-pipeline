@@ -1,0 +1,27 @@
+﻿rules:
+  - id: dangerous-eval
+    languages: [python]
+    severity: ERROR
+    message: "eval() executes arbitrary code (CWE-95)."
+    pattern: eval(...)
+
+  - id: os-command-injection
+    languages: [python]
+    severity: ERROR
+    message: "OS command execution (CWE-78)."
+    patterns:
+      - pattern-either:
+          - pattern: os.system(...)
+          - pattern: exec(...)
+
+  - id: hardcoded-secret
+    languages: [python]
+    severity: WARNING
+    message: "Hardcoded secret (CWE-798)."
+    pattern-regex: (?i)(password|api_key|secret|token)\s*=\s*["'][^"']{6,}["']
+
+  - id: flask-debug
+    languages: [python]
+    severity: ERROR
+    message: "debug=True exposes Werkzeug console (CWE-489)."
+    pattern: .run(..., debug=True, ...)

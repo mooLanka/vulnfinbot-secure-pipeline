@@ -1,0 +1,17 @@
+﻿venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.env
+*.pem
+*.key
+*.log
+.trivycache/
+.idea/
+.vscode/
+reports/*
+!reports/.gitkeep
+!reports/README.md
